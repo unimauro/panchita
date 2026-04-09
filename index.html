@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Gata Panchita</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Patrick+Hand&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --pink: #FFB6C1;
+            --pink-light: #FFF0F5;
+            --lavender: #E6E6FA;
+            --mint: #B5EAD7;
+            --peach: #FFDAB9;
+            --cream: #FFF8E7;
+            --yellow: #FFFACD;
+            --blue-light: #B5D8F7;
+            --text: #5D5D5D;
+            --text-dark: #4A4A4A;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--cream);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Floating paw prints background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(255,182,193,0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 40%, rgba(181,234,215,0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 80%, rgba(230,230,250,0.15) 0%, transparent 50%);
+        }
+
+        /* Header / Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--pink-light), var(--lavender), var(--mint));
+            text-align: center;
+            padding: 2rem 1rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: var(--cream);
+            border-radius: 50% 50% 0 0;
+        }
+
+        .hero-img-container {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 8px 25px rgba(255,182,193,0.4);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero h1 {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .hero h1 .paw {
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        .hero p.subtitle {
+            font-size: 1.1rem;
+            color: #888;
+            font-weight: 600;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        /* Sections */
+        section {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem 1.2rem;
+        }
+
+        .section-title {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 1.2rem;
+            color: var(--text-dark);
+        }
+
+        .section-title .icon {
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* About card */
+        .about-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.8rem;
+            box-shadow: 0 4px 20px rgba(255,182,193,0.2);
+            border: 2px solid var(--pink-light);
+            position: relative;
+        }
+
+        .about-card::before {
+            content: '~';
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            font-size: 2rem;
+            color: var(--pink);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .about-item {
+            background: var(--pink-light);
+            border-radius: 16px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .about-item:nth-child(2) { background: var(--lavender); }
+        .about-item:nth-child(3) { background: var(--mint); }
+        .about-item:nth-child(4) { background: var(--peach); }
+
+        .about-item .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            margin-bottom: 0.3rem;
+        }
+
+        .about-item .value {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        .about-text {
+            text-align: center;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        /* Gallery */
+        .gallery-section {
+            background: linear-gradient(180deg, transparent, var(--pink-light) 20%, var(--pink-light) 80%, transparent);
+            padding: 2rem 0;
+        }
+
+        .gallery-grid {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 1.2rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 3px solid white;
+            aspect-ratio: 1;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        .gallery-item.featured {
+            grid-column: span 2;
+            aspect-ratio: 16/9;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Friend section */
+        .friend-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.8rem;
+            box-shadow: 0 4px 20px rgba(181,234,215,0.3);
+            border: 2px solid var(--mint);
+            text-align: center;
+        }
+
+        .friend-card p {
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .friend-badge {
+            display: inline-block;
+            background: var(--mint);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            margin: 0.8rem 0;
+            font-size: 1.1rem;
+        }
+
+        .time-badge {
+            display: inline-block;
+            background: var(--yellow);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Map */
+        .map-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(181,216,247,0.3);
+            border: 2px solid var(--blue-light);
+        }
+
+        .map-card .map-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .map-card .map-info p {
+            line-height: 1.6;
+        }
+
+        .map-embed {
+            width: 100%;
+            height: 300px;
+            border: none;
+        }
+
+        .location-pin {
+            display: inline-block;
+            background: var(--blue-light);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        /* Visit CTA */
+        .visit-section {
+            text-align: center;
+        }
+
+        .visit-card {
+            background: linear-gradient(135deg, var(--peach), var(--pink-light));
+            border-radius: 24px;
+            padding: 2rem;
+            border: 2px solid white;
+            box-shadow: 0 4px 20px rgba(255,218,185,0.3);
+        }
+
+        .visit-card h3 {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .visit-items {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .visit-item {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .visit-item .emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .visit-note {
+            font-size: 0.9rem;
+            color: #999;
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: linear-gradient(180deg, transparent, var(--lavender));
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        footer .paws {
+            font-size: 1.5rem;
+            letter-spacing: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Decorative elements */
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--pink);
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 16px;
+            box-shadow: 0 0 40px rgba(255,182,193,0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2rem; }
+            .hero-img-container { width: 160px; height: 160px; }
+            .about-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.7rem; }
+            .visit-items { gap: 0.8rem; }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero -->
+    <header class="hero">
+        <div class="hero-img-container">
+            <img src="img/panchita-portrait.jpg" alt="La Gata Panchita">
+        </div>
+        <h1><span class="paw">🐾</span> La Gata Panchita <span class="paw">🐾</span></h1>
+        <p class="subtitle">La gatita del barrio que todos queremos</p>
+    </header>
+
+    <!-- Sobre Panchita -->
+    <section class="fade-in">
+        <h2 class="section-title"><span class="icon">🌸</span> Conoce a Panchita</h2>
+        <div class="about-card">
+            <div class="about-grid">
+                <div class="about-item">
+                    <div class="label">Nombre</div>
+                    <div class="value">Panchita</div>
+                </div>
+                <div class="about-item">
+                    <div class="label">Edad</div>
+                    <div class="value">10 anitos</div>
+                </div>
+                <div class="about-item">
+                    <div class="label">Color</div>
+                    <div class="value">Blanco y Negro</div>
+                </div>
+                <div class="about-item">
+                    <div class="label">Personalidad</div>
+                    <div class="value">Cariñosa y Juguetona</div>
+                </div>
+            </div>
+            <p class="about-text">
+                Panchita es una gatita adulta que vive en nuestra calle desde hace muchos años.
+                Todos los vecinos la conocen y la quieren mucho.
+                Ella pasea tranquilamente por el barrio y siempre recibe cariño y comidita de todos.
+                Es una gatita muy especial que une a toda la comunidad.
+            </p>
+        </div>
+    </section>
+
+    <!-- Galeria -->
+    <div class="gallery-section">
+        <section class="fade-in">
+            <h2 class="section-title"><span class="icon">📸</span> Galería de Panchita</h2>
+            <p style="text-align:center; margin-bottom:1rem; color:#999; font-size:0.9rem;">Panchita vive aquí, en nuestra calle, y le encanta posar para las fotos</p>
+            <div class="gallery-grid">
+                <div class="gallery-item featured">
+                    <img src="img/panchita-hero.jpg" alt="Panchita posando" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/panchita1.jpg" alt="Panchita de noche" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/panchita2.jpg" alt="Panchita sentada" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/panchita3.jpg" alt="Panchita comiendo" loading="lazy">
+                </div>
+                <div class="gallery-item">
+                    <img src="img/panchita4.jpg" alt="Panchita paseando" loading="lazy">
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Amigo Anastacio -->
+    <section class="fade-in">
+        <h2 class="section-title"><span class="icon">🐱</span> Su Amigo Anastacio</h2>
+        <div class="friend-card">
+            <p>Panchita no está sola, tiene un gran amigo:</p>
+            <div class="friend-badge">🐈‍⬛ Anastacio</div>
+            <p>
+                Juntos salen a jugar y pasear por el barrio todas las tardes.
+            </p>
+            <div class="time-badge">🕕 Salen a jugar a las 6:00 PM</div>
+            <p style="margin-top:0.8rem; font-size:0.95rem; color:#999;">
+                Si vienes a esa hora, podrás verlos jugar juntos
+            </p>
+        </div>
+    </section>
+
+    <!-- Mapa -->
+    <section class="fade-in">
+        <h2 class="section-title"><span class="icon">📍</span> ¿Dónde vive Panchita?</h2>
+        <div class="map-card">
+            <div class="map-info">
+                <span class="location-pin">📌 Jirón Daniel Hernández & Parque El Carmen</span>
+                <p>
+                    Panchita vive entre el <strong>Jirón Daniel Hernández</strong> y el <strong>Parque El Carmen</strong>.
+                    Ahí la podrás encontrar descansando o paseando por la vereda.
+                </p>
+            </div>
+            <iframe
+                class="map-embed"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d975.5!2d-77.0305!3d-12.0875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sParque+El+Carmen!5e0!3m2!1ses!2spe!4v1"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- Visita -->
+    <section class="fade-in visit-section">
+        <h2 class="section-title"><span class="icon">💕</span> ¿Quieres visitarla?</h2>
+        <div class="visit-card">
+            <h3>Si vienes a ver a Panchita, por favor tráele:</h3>
+            <div class="visit-items">
+                <div class="visit-item">
+                    <span class="emoji">💧</span>
+                    Agüita fresca
+                </div>
+                <div class="visit-item">
+                    <span class="emoji">🐟</span>
+                    Comidita
+                </div>
+                <div class="visit-item">
+                    <span class="emoji">❤️</span>
+                    Mucho cariño
+                </div>
+            </div>
+            <p class="visit-note">Panchita y Anastacio te lo agradecerán con muchos ronroneos</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="paws">🐾 🐾 🐾</div>
+        <p>Hecho con mucho amor para la exposición escolar</p>
+        <p style="margin-top:0.3rem">La Gata Panchita - La gatita del barrio</p>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <img src="" alt="Panchita" id="lightbox-img">
+    </div>
+
+    <script>
+        // Scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightbox.classList.add('active');
+            });
+        });
+
+        lightbox.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+    </script>
+
+</body>
+</html>
