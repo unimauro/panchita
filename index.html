@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Gata Panchita</title>
+    <title>La Gata Panchita 🐾</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐱</text></svg>">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Patrick+Hand&display=swap');
 
@@ -33,7 +34,6 @@
             overflow-x: hidden;
         }
 
-        /* Floating paw prints background */
         body::before {
             content: '';
             position: fixed;
@@ -49,11 +49,11 @@
                 radial-gradient(circle at 50% 80%, rgba(230,230,250,0.15) 0%, transparent 50%);
         }
 
-        /* Header / Hero */
+        /* Hero */
         .hero {
             background: linear-gradient(135deg, var(--pink-light), var(--lavender), var(--mint));
             text-align: center;
-            padding: 2rem 1rem 3rem;
+            padding: 2.5rem 1rem 3.5rem;
             position: relative;
             overflow: hidden;
         }
@@ -70,14 +70,14 @@
         }
 
         .hero-img-container {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 1rem;
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 1.2rem;
             border-radius: 50%;
-            border: 5px solid white;
-            box-shadow: 0 8px 25px rgba(255,182,193,0.4);
+            border: 6px solid white;
+            box-shadow: 0 8px 30px rgba(255,182,193,0.5);
             overflow: hidden;
-            position: relative;
+            animation: gentle-pulse 3s ease-in-out infinite;
         }
 
         .hero-img-container img {
@@ -86,9 +86,14 @@
             object-fit: cover;
         }
 
+        @keyframes gentle-pulse {
+            0%, 100% { box-shadow: 0 8px 30px rgba(255,182,193,0.5); }
+            50% { box-shadow: 0 8px 40px rgba(255,182,193,0.7); }
+        }
+
         .hero h1 {
             font-family: 'Patrick Hand', cursive;
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: var(--text-dark);
             margin-bottom: 0.3rem;
         }
@@ -99,7 +104,7 @@
         }
 
         .hero p.subtitle {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: #888;
             font-weight: 600;
         }
@@ -141,16 +146,6 @@
             padding: 1.8rem;
             box-shadow: 0 4px 20px rgba(255,182,193,0.2);
             border: 2px solid var(--pink-light);
-            position: relative;
-        }
-
-        .about-card::before {
-            content: '~';
-            position: absolute;
-            top: -10px;
-            right: 20px;
-            font-size: 2rem;
-            color: var(--pink);
         }
 
         .about-grid {
@@ -193,7 +188,7 @@
 
         /* Gallery */
         .gallery-section {
-            background: linear-gradient(180deg, transparent, var(--pink-light) 20%, var(--pink-light) 80%, transparent);
+            background: linear-gradient(180deg, transparent, var(--pink-light) 15%, var(--pink-light) 85%, transparent);
             padding: 2rem 0;
         }
 
@@ -210,25 +205,52 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border: 3px solid white;
+            border: 4px solid white;
             aspect-ratio: 1;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .gallery-item:hover {
-            transform: scale(1.03);
+            transform: scale(1.03) rotate(-1deg);
+            box-shadow: 0 8px 25px rgba(255,182,193,0.4);
         }
 
         .gallery-item.featured {
             grid-column: span 2;
-            aspect-ratio: 16/9;
+            aspect-ratio: 4/3;
         }
 
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: filter 0.3s ease;
+        }
+
+        /* Brighten dark nighttime photos */
+        .gallery-item.night-photo img {
+            filter: brightness(1.3) contrast(1.1);
+        }
+
+        .gallery-item.night-photo:hover img {
+            filter: brightness(1.4) contrast(1.15);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.5));
+            color: white;
+            padding: 2rem 1rem 0.8rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .gallery-item {
+            position: relative;
         }
 
         /* Friend section */
@@ -333,6 +355,11 @@
             padding: 1rem 1.5rem;
             font-weight: 600;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .visit-item:hover {
+            transform: translateY(-4px);
         }
 
         .visit-item .emoji {
@@ -362,21 +389,6 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Decorative elements */
-        .sparkle {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background: var(--pink);
-            border-radius: 50%;
-            animation: sparkle 2s infinite;
-        }
-
-        @keyframes sparkle {
-            0%, 100% { opacity: 0; transform: scale(0); }
-            50% { opacity: 1; transform: scale(1); }
-        }
-
         /* Lightbox */
         .lightbox {
             display: none;
@@ -385,11 +397,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.85);
+            background: rgba(0,0,0,0.9);
             z-index: 1000;
             justify-content: center;
             align-items: center;
             cursor: pointer;
+            backdrop-filter: blur(5px);
         }
 
         .lightbox.active {
@@ -397,19 +410,44 @@
         }
 
         .lightbox img {
-            max-width: 90%;
-            max-height: 90%;
+            max-width: 92%;
+            max-height: 92%;
             border-radius: 16px;
-            box-shadow: 0 0 40px rgba(255,182,193,0.3);
+            box-shadow: 0 0 60px rgba(255,182,193,0.3);
+            animation: lightbox-in 0.3s ease;
+        }
+
+        @keyframes lightbox-in {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: rgba(255,255,255,0.15);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            font-family: inherit;
         }
 
         /* Responsive */
         @media (max-width: 480px) {
             .hero h1 { font-size: 2rem; }
-            .hero-img-container { width: 160px; height: 160px; }
+            .hero-img-container { width: 170px; height: 170px; }
             .about-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.7rem; }
+            .gallery-grid { gap: 0.7rem; }
             .visit-items { gap: 0.8rem; }
+            .visit-item { padding: 0.8rem 1.2rem; }
         }
 
         /* Scroll animations */
@@ -430,7 +468,7 @@
     <!-- Hero -->
     <header class="hero">
         <div class="hero-img-container">
-            <img src="img/panchita-portrait.jpg" alt="La Gata Panchita">
+            <img src="img/panchita-hero.jpg" alt="La Gata Panchita">
         </div>
         <h1><span class="paw">🐾</span> La Gata Panchita <span class="paw">🐾</span></h1>
         <p class="subtitle">La gatita del barrio que todos queremos</p>
@@ -474,19 +512,24 @@
             <p style="text-align:center; margin-bottom:1rem; color:#999; font-size:0.9rem;">Panchita vive aquí, en nuestra calle, y le encanta posar para las fotos</p>
             <div class="gallery-grid">
                 <div class="gallery-item featured">
-                    <img src="img/panchita-hero.jpg" alt="Panchita posando" loading="lazy">
+                    <img src="img/panchita-portrait.jpg" alt="Retrato de Panchita" loading="lazy">
+                    <div class="gallery-caption">Panchita, la reina del barrio</div>
                 </div>
                 <div class="gallery-item">
+                    <img src="img/panchita-hero.jpg" alt="Panchita en la puerta" loading="lazy">
+                </div>
+                <div class="gallery-item night-photo">
                     <img src="img/panchita1.jpg" alt="Panchita de noche" loading="lazy">
                 </div>
-                <div class="gallery-item">
+                <div class="gallery-item night-photo">
                     <img src="img/panchita2.jpg" alt="Panchita sentada" loading="lazy">
                 </div>
-                <div class="gallery-item">
-                    <img src="img/panchita3.jpg" alt="Panchita comiendo" loading="lazy">
-                </div>
-                <div class="gallery-item">
+                <div class="gallery-item night-photo">
                     <img src="img/panchita4.jpg" alt="Panchita paseando" loading="lazy">
+                </div>
+                <div class="gallery-item featured night-photo">
+                    <img src="img/panchita3.jpg" alt="Panchita comiendo" loading="lazy">
+                    <div class="gallery-caption">Los vecinos le dan comidita todas las noches</div>
                 </div>
             </div>
         </section>
@@ -513,15 +556,15 @@
         <h2 class="section-title"><span class="icon">📍</span> ¿Dónde vive Panchita?</h2>
         <div class="map-card">
             <div class="map-info">
-                <span class="location-pin">📌 Jirón Daniel Hernández & Parque El Carmen</span>
+                <span class="location-pin">📌 Jirón Daniel Hernández y Parque El Carmen</span>
                 <p>
-                    Panchita vive entre el <strong>Jirón Daniel Hernández</strong> y el <strong>Parque El Carmen</strong>.
+                    Panchita vive entre el <strong>Jirón Daniel Hernández</strong> y el <strong>Parque El Carmen</strong>, en el distrito de Lince, Lima.
                     Ahí la podrás encontrar descansando o paseando por la vereda.
                 </p>
             </div>
             <iframe
                 class="map-embed"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d975.5!2d-77.0305!3d-12.0875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sParque+El+Carmen!5e0!3m2!1ses!2spe!4v1"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1560.4!2d-77.03375!3d-12.08388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c8f4c0a6dd2d%3A0x8b2e3a0c3c6e3b1a!2sParque%20El%20Carmen!5e0!3m2!1ses!2spe!4v1"
                 allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade">
@@ -561,6 +604,7 @@
 
     <!-- Lightbox -->
     <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" aria-label="Cerrar">&times;</button>
         <img src="" alt="Panchita" id="lightbox-img">
     </div>
 
@@ -587,8 +631,10 @@
             });
         });
 
-        lightbox.addEventListener('click', () => {
-            lightbox.classList.remove('active');
+        lightbox.addEventListener('click', (e) => {
+            if (e.target !== lightboxImg) {
+                lightbox.classList.remove('active');
+            }
         });
     </script>
 
