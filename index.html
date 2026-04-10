@@ -682,6 +682,363 @@
             animation: gentle-pulse 2s ease-in-out infinite;
         }
 
+        /* Dark mode */
+        .dark-mode {
+            --pink: #994455;
+            --pink-light: #2A1A1E;
+            --lavender: #1E1E2E;
+            --mint: #1A2E24;
+            --peach: #2E2218;
+            --cream: #1A1A2E;
+            --yellow: #2E2A18;
+            --blue-light: #1A2230;
+            --text: #C8C8D0;
+            --text-dark: #E8E8F0;
+        }
+        .dark-mode body, .dark-mode { background-color: #1A1A2E; color: #C8C8D0; }
+        .dark-mode .hero { background: linear-gradient(135deg, #1E1225, #1E1E2E, #1A2E24); }
+        .dark-mode .hero::after { background: #1A1A2E; }
+        .dark-mode .about-card,
+        .dark-mode .friend-card,
+        .dark-mode .map-card,
+        .dark-mode .facts-card,
+        .dark-mode .timeline-card,
+        .dark-mode .qr-card,
+        .dark-mode .comments-card { background: #22223A; border-color: #333355; }
+        .dark-mode .about-item { background: #2A1A2E; }
+        .dark-mode .about-item:nth-child(2) { background: #1E1E35; }
+        .dark-mode .about-item:nth-child(3) { background: #1A2E24; }
+        .dark-mode .about-item:nth-child(4) { background: #2E2518; }
+        .dark-mode .gallery-section { background: linear-gradient(180deg, transparent, #1E1225 15%, #1E1225 85%, transparent); }
+        .dark-mode .gallery-item { border-color: #333; }
+        .dark-mode .visit-card { background: linear-gradient(135deg, #2E2218, #2A1A1E); }
+        .dark-mode .visit-item { background: #22223A; }
+        .dark-mode .quote-card { background: linear-gradient(135deg, #1E1E2E, #2A1A1E, #2E2A18); }
+        .dark-mode .love-card { background: linear-gradient(135deg, #2A1A1E, #251818, #1E1E2E); }
+        .dark-mode .tip-card { background: #22223A; }
+        .dark-mode .tip-card.tip-good { border-color: #2A5540; }
+        .dark-mode .tip-card.tip-bad { border-color: #553030; }
+        .dark-mode .tip-card p { color: #888; }
+        .dark-mode .share-popup, .dark-mode .lightbox-share-popup { background: #22223A; }
+        .dark-mode .share-popup-item { color: #E8E8F0; }
+        .dark-mode .share-popup-item:hover { background: #333355; }
+        .dark-mode .share-trigger { background: rgba(30,30,50,0.9); }
+        .dark-mode .share-trigger svg { fill: #E8E8F0; }
+        .dark-mode .sidebar-nav { background: rgba(30,30,50,0.9); border-color: rgba(100,100,150,0.3); }
+        .dark-mode .nav-dot:hover { background: #333355; }
+        .dark-mode .nav-dot.active { background: #994455; }
+        .dark-mode .nav-dot::after { background: #333355; }
+        .dark-mode footer { background: linear-gradient(180deg, transparent, #1E1E2E); }
+        .dark-mode .visitor-badge { background: rgba(30,30,50,0.85); }
+        .dark-mode .friend-badge { background: #1A3E2A; }
+        .dark-mode .time-badge { background: #2E2A18; }
+        .dark-mode .location-pin { background: #1A2A3E; }
+        .dark-mode .fact-nav-btn { border-color: #333355; background: #22223A; color: #E8E8F0; }
+        .dark-mode .fact-nav-btn:hover { background: #333355; }
+        .dark-mode .fact-dot { background: #333355; }
+        .dark-mode .fact-dot.active { background: #994455; }
+        .dark-mode .timeline::before { opacity: 0.6; }
+        .dark-mode .timeline-item::before { background: #22223A; }
+        .dark-mode .purr-float { background: #22223A; color: #E8E8F0; }
+        .dark-mode .purr-float.purring { background: #2A1A1E; }
+        .dark-mode .bmc-float { background: #CCAA00; }
+        .dark-mode .qr-print-btn { background: #333355; color: #E8E8F0; }
+
+        /* Dark mode toggle */
+        .dark-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 900;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            background: rgba(255,255,255,0.85);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s, background 0.3s;
+            backdrop-filter: blur(5px);
+        }
+        .dark-toggle:hover { transform: scale(1.1); }
+        .dark-mode .dark-toggle { background: rgba(30,30,50,0.85); }
+
+        /* Music toggle */
+        .music-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 4rem;
+            z-index: 900;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            background: rgba(255,255,255,0.85);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s, background 0.3s;
+            backdrop-filter: blur(5px);
+        }
+        .music-toggle:hover { transform: scale(1.1); }
+        .music-toggle.playing { animation: music-pulse 1s ease-in-out infinite; }
+        .dark-mode .music-toggle { background: rgba(30,30,50,0.85); }
+        @keyframes music-pulse {
+            0%,100% { box-shadow: 0 2px 12px rgba(0,0,0,0.1); }
+            50% { box-shadow: 0 2px 20px rgba(255,182,193,0.4); }
+        }
+
+        /* Paw cursor trail */
+        .paw-trail {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            font-size: 1.2rem;
+            opacity: 0.6;
+            animation: paw-fade 1.2s ease-out forwards;
+        }
+        @keyframes paw-fade {
+            0% { opacity: 0.6; transform: scale(1) rotate(var(--paw-rot)); }
+            100% { opacity: 0; transform: scale(0.3) rotate(var(--paw-rot)); }
+        }
+
+        /* Hero entrance animation */
+        .hero-entrance .hero-img-container {
+            animation: hero-walk-in 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+        }
+        .hero-entrance h1 {
+            animation: hero-text-in 0.8s ease 0.6s both;
+        }
+        .hero-entrance .subtitle {
+            animation: hero-text-in 0.8s ease 0.8s both;
+        }
+        .hero-entrance .visitor-badge {
+            animation: hero-text-in 0.8s ease 1s both;
+        }
+        @keyframes hero-walk-in {
+            0% { opacity: 0; transform: translateX(-100px) rotate(-10deg) scale(0.5); }
+            60% { transform: translateX(10px) rotate(3deg) scale(1.05); }
+            100% { opacity: 1; transform: translateX(0) rotate(0) scale(1); }
+        }
+        @keyframes hero-text-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Days counter */
+        .days-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--mint);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-top: 0.5rem;
+        }
+
+        /* Health status */
+        .health-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.8rem;
+            box-shadow: 0 4px 20px rgba(181,234,215,0.25);
+            border: 2px solid var(--mint);
+            text-align: center;
+        }
+        .dark-mode .health-card { background: #22223A; border-color: #2A5540; }
+        .health-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 0.8rem 0;
+        }
+        .health-status.healthy { background: #D4EDDA; color: #155724; }
+        .dark-mode .health-status.healthy { background: #1A3E2A; color: #7ECC90; }
+        .health-dot {
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: #28A745;
+            animation: health-blink 2s ease-in-out infinite;
+        }
+        @keyframes health-blink {
+            0%,100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .health-info { font-size: 0.85rem; color: #999; margin-top: 0.5rem; }
+
+        /* Vet card / ID */
+        .vet-card {
+            background: linear-gradient(135deg, #FFF8E7, var(--pink-light));
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 3px solid var(--pink);
+            box-shadow: 0 4px 20px rgba(255,182,193,0.2);
+            max-width: 380px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .dark-mode .vet-card { background: linear-gradient(135deg, #22223A, #2A1A1E); border-color: #994455; }
+        .vet-card::before {
+            content: '🐾';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 5rem;
+            opacity: 0.08;
+            transform: rotate(15deg);
+        }
+        .vet-header {
+            text-align: center;
+            border-bottom: 2px dashed var(--pink);
+            padding-bottom: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+        .vet-header h4 {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+        }
+        .vet-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.4rem 0;
+            font-size: 0.9rem;
+            border-bottom: 1px dotted rgba(0,0,0,0.1);
+        }
+        .dark-mode .vet-row { border-bottom-color: rgba(255,255,255,0.1); }
+        .vet-label { color: #999; font-weight: 600; }
+        .vet-value { font-weight: 700; color: var(--text-dark); }
+        .vet-photo {
+            width: 70px; height: 70px;
+            border-radius: 50%;
+            border: 3px solid var(--pink);
+            overflow: hidden;
+            margin: 0 auto 0.5rem;
+        }
+        .vet-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Quiz */
+        .quiz-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(230,230,250,0.3);
+            border: 2px solid var(--lavender);
+            text-align: center;
+        }
+        .dark-mode .quiz-card { background: #22223A; border-color: #333355; }
+        .quiz-question {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            min-height: 50px;
+        }
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+        }
+        .quiz-opt {
+            padding: 0.8rem;
+            border-radius: 14px;
+            border: 2px solid var(--lavender);
+            background: var(--pink-light);
+            cursor: pointer;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            transition: all 0.2s;
+        }
+        .dark-mode .quiz-opt { background: #1E1E2E; border-color: #333355; }
+        .quiz-opt:hover { transform: scale(1.03); border-color: var(--pink); }
+        .quiz-opt.correct { background: #D4EDDA; border-color: #28A745; }
+        .quiz-opt.wrong { background: #F8D7DA; border-color: #DC3545; }
+        .dark-mode .quiz-opt.correct { background: #1A3E2A; border-color: #28A745; }
+        .dark-mode .quiz-opt.wrong { background: #3E1A1A; border-color: #DC3545; }
+        .quiz-opt:disabled { cursor: default; opacity: 0.7; }
+        .quiz-progress {
+            display: flex;
+            justify-content: center;
+            gap: 0.4rem;
+            margin-bottom: 1rem;
+        }
+        .quiz-pip {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: var(--lavender);
+            transition: background 0.3s;
+        }
+        .quiz-pip.done { background: #28A745; }
+        .quiz-pip.fail { background: #DC3545; }
+        .quiz-pip.current { background: var(--pink); transform: scale(1.3); }
+        .quiz-score {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+        }
+        .quiz-restart {
+            margin-top: 0.8rem;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            border: none;
+            background: var(--pink);
+            color: white;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .quiz-restart:hover { transform: scale(1.05); }
+
+        /* Collaborative gallery CTA */
+        .collab-card {
+            background: linear-gradient(135deg, var(--mint), var(--blue-light));
+            border-radius: 24px;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid white;
+            box-shadow: 0 4px 20px rgba(181,234,215,0.3);
+        }
+        .dark-mode .collab-card { background: linear-gradient(135deg, #1A2E24, #1A2230); border-color: #333; }
+        .collab-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: white;
+            color: var(--text-dark);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            margin-top: 1rem;
+        }
+        .dark-mode .collab-btn { background: #22223A; color: #E8E8F0; }
+        .collab-btn:hover { transform: translateY(-3px); }
+
         /* Visitor counter badge */
         .visitor-badge {
             display: inline-flex;
@@ -1210,6 +1567,11 @@
             .bmc-float .bmc-icon { font-size: 1.4rem; }
             .bmc-float:hover { font-size: 0.85rem; }
             .purr-float { bottom: 4.2rem; left: 0.8rem; width: 44px; height: 44px; font-size: 1.3rem; }
+            .dark-toggle { top: 0.6rem; right: 0.6rem; width: 38px; height: 38px; font-size: 1.1rem; }
+            .music-toggle { top: 0.6rem; right: 3.2rem; width: 38px; height: 38px; font-size: 1.1rem; }
+            .quiz-options { grid-template-columns: 1fr; }
+            .vet-card { padding: 1.2rem; }
+            .vet-row { font-size: 0.8rem; }
             .tips-grid { grid-template-columns: 1fr; }
             .love-counter { font-size: 2rem; }
             .love-btn { font-size: 1rem; padding: 0.8rem 1.5rem; }
@@ -1270,26 +1632,30 @@
     <nav class="sidebar-nav" id="sidebar-nav">
         <a href="#hero" class="nav-dot active" data-label="Inicio"><span class="dot-icon">🏠</span></a>
         <a href="#conoce" class="nav-dot" data-label="Conoce"><span class="dot-icon">🌸</span></a>
-        <a href="#rutina" class="nav-dot" data-label="Rutina"><span class="dot-icon">🕐</span></a>
+        <a href="#salud" class="nav-dot" data-label="Salud"><span class="dot-icon">🏥</span></a>
         <a href="#galeria" class="nav-dot" data-label="Galeria"><span class="dot-icon">📸</span></a>
         <a href="#carino" class="nav-dot" data-label="Cariño"><span class="dot-icon">❤️</span></a>
-        <a href="#datos" class="nav-dot" data-label="Datos"><span class="dot-icon">🧠</span></a>
+        <a href="#quiz" class="nav-dot" data-label="Quiz"><span class="dot-icon">🎯</span></a>
         <a href="#amigo" class="nav-dot" data-label="Ignacio"><span class="dot-icon">🐱</span></a>
-        <a href="#tips" class="nav-dot" data-label="Tips"><span class="dot-icon">📋</span></a>
         <a href="#mapa" class="nav-dot" data-label="Mapa"><span class="dot-icon">📍</span></a>
         <a href="#visita" class="nav-dot" data-label="Visita"><span class="dot-icon">💕</span></a>
-        <a href="#qr" class="nav-dot" data-label="QR"><span class="dot-icon">📱</span></a>
         <a href="#mensajes" class="nav-dot" data-label="Mensajes"><span class="dot-icon">💬</span></a>
     </nav>
 
     <!-- Hero -->
-    <header class="hero" id="hero">
+    <!-- Dark mode toggle -->
+    <button class="dark-toggle" id="dark-toggle" title="Modo oscuro">🌙</button>
+    <!-- Music toggle -->
+    <button class="music-toggle" id="music-toggle" title="Musica ambiental">🎵</button>
+
+    <header class="hero hero-entrance" id="hero">
         <div class="hero-img-container">
             <img src="img/panchita-hero.jpg" alt="La Gata Panchita">
         </div>
         <h1><span class="paw">🐾</span> La Gata Panchita <span class="paw">🐾</span></h1>
         <p class="subtitle">La gatita del barrio que todos queremos</p>
         <div class="visitor-badge">👀 <span class="vb-count" id="visitor-count">0</span> personas han conocido a Panchita</div>
+        <div class="days-badge">🗓️ <span id="days-count">0</span> dias alegrandonos el barrio</div>
     </header>
 
     <!-- Sobre Panchita -->
@@ -1320,6 +1686,36 @@
                 Ella pasea tranquilamente por el barrio y siempre recibe cariño y comidita de todos.
                 Es una gatita muy especial que une a toda la comunidad.
             </p>
+        </div>
+    </section>
+
+    <!-- Estado de salud -->
+    <section class="fade-in" id="salud">
+        <h2 class="section-title"><span class="icon">🏥</span> Estado de Panchita</h2>
+        <div class="health-card">
+            <div class="health-status healthy">
+                <span class="health-dot"></span> Panchita esta sana y feliz
+            </div>
+            <p class="health-info">Ultima revision: Marzo 2026 | Vacunas al dia</p>
+        </div>
+        <div style="margin-top:1.2rem;">
+            <div class="vet-card">
+                <div class="vet-header">
+                    <div class="vet-photo">
+                        <img src="img/panchita-hero.jpg" alt="Panchita">
+                    </div>
+                    <h4>🪪 Carnet de Identidad Gatuna</h4>
+                </div>
+                <div class="vet-row"><span class="vet-label">Nombre</span><span class="vet-value">Panchita</span></div>
+                <div class="vet-row"><span class="vet-label">Especie</span><span class="vet-value">Gata domestica</span></div>
+                <div class="vet-row"><span class="vet-label">Edad</span><span class="vet-value">10 años</span></div>
+                <div class="vet-row"><span class="vet-label">Color</span><span class="vet-value">Blanco y Negro</span></div>
+                <div class="vet-row"><span class="vet-label">Peso aprox.</span><span class="vet-value">4.2 kg</span></div>
+                <div class="vet-row"><span class="vet-label">Esterilizada</span><span class="vet-value">Si ✅</span></div>
+                <div class="vet-row"><span class="vet-label">Vacunas</span><span class="vet-value">Al dia ✅</span></div>
+                <div class="vet-row"><span class="vet-label">Zona</span><span class="vet-value">Pueblo Libre, Lima</span></div>
+                <div class="vet-row"><span class="vet-label">Mejor amigo</span><span class="vet-value">Ignacio 🐈‍⬛</span></div>
+            </div>
         </div>
     </section>
 
@@ -1390,6 +1786,15 @@
         </section>
     </div>
 
+    <!-- Galeria colaborativa -->
+    <section class="fade-in">
+        <div class="collab-card">
+            <h3 style="font-family:'Patrick Hand',cursive; font-size:1.4rem; color:var(--text-dark); margin-bottom:0.5rem;">📷 ¿Tienes fotos de Panchita?</h3>
+            <p style="font-size:0.95rem; line-height:1.6;">Si la has visto en el barrio y le tomaste una foto, compartela con nosotros!</p>
+            <a href="https://forms.gle/panchita" target="_blank" rel="noopener" class="collab-btn">📸 Subir mi foto de Panchita</a>
+        </div>
+    </section>
+
     <!-- Dar Carino -->
     <section class="fade-in love-section" id="carino">
         <h2 class="section-title"><span class="icon">❤️</span> Dale cariño a Panchita</h2>
@@ -1415,6 +1820,20 @@
                 <button class="fact-nav-btn" id="fact-prev">◀</button>
                 <div class="fact-dots" id="fact-dots"></div>
                 <button class="fact-nav-btn" id="fact-next">▶</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz -->
+    <section class="fade-in" id="quiz">
+        <h2 class="section-title"><span class="icon">🎯</span> ¿Cuanto sabes sobre gatos?</h2>
+        <div class="quiz-card">
+            <div class="quiz-progress" id="quiz-progress"></div>
+            <div class="quiz-question" id="quiz-question"></div>
+            <div class="quiz-options" id="quiz-options"></div>
+            <div id="quiz-result" style="display:none;">
+                <div class="quiz-score" id="quiz-score"></div>
+                <button class="quiz-restart" id="quiz-restart">🔄 Jugar de nuevo</button>
             </div>
         </div>
     </section>
@@ -1753,7 +2172,7 @@
 
         // Sidebar navigation - active section tracking
         const navDots = document.querySelectorAll('.nav-dot');
-        const sectionIds = ['hero', 'conoce', 'rutina', 'galeria', 'carino', 'datos', 'amigo', 'tips', 'mapa', 'visita', 'qr', 'mensajes'];
+        const sectionIds = ['hero', 'conoce', 'salud', 'galeria', 'carino', 'quiz', 'amigo', 'mapa', 'visita', 'mensajes'];
         const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
 
         function updateActiveNav() {
@@ -1911,6 +2330,172 @@
                     nodes = [];
                 }, duration * 1000);
             });
+        })();
+
+        // === DAYS COUNTER ===
+        (function() {
+            const startDate = new Date('2016-01-01');
+            const today = new Date();
+            const days = Math.floor((today - startDate) / (1000*60*60*24));
+            document.getElementById('days-count').textContent = days.toLocaleString();
+        })();
+
+        // === DARK MODE ===
+        (function() {
+            const btn = document.getElementById('dark-toggle');
+            const saved = localStorage.getItem('panchita-dark');
+            if (saved === 'true') {
+                document.documentElement.classList.add('dark-mode');
+                btn.textContent = '☀️';
+            }
+            btn.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark-mode');
+                const isDark = document.documentElement.classList.contains('dark-mode');
+                localStorage.setItem('panchita-dark', isDark);
+                btn.textContent = isDark ? '☀️' : '🌙';
+            });
+        })();
+
+        // === AMBIENT MUSIC ===
+        (function() {
+            const btn = document.getElementById('music-toggle');
+            let audioCtx = null;
+            let playing = false;
+            let musicNodes = [];
+
+            function startMusic() {
+                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const notes = [261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88];
+                function playNote() {
+                    if (!playing) return;
+                    const freq = notes[Math.floor(Math.random()*notes.length)];
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.value = freq;
+                    gain.gain.setValueAtTime(0, audioCtx.currentTime);
+                    gain.gain.linearRampToValueAtTime(0.04, audioCtx.currentTime + 0.3);
+                    gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 2);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start(audioCtx.currentTime);
+                    osc.stop(audioCtx.currentTime + 2);
+                    musicNodes.push(osc);
+                    setTimeout(playNote, 800 + Math.random()*1200);
+                }
+                playNote();
+            }
+
+            btn.addEventListener('click', () => {
+                if (playing) {
+                    playing = false;
+                    btn.classList.remove('playing');
+                    btn.textContent = '🎵';
+                    musicNodes.forEach(n => { try { n.stop(); } catch(e){} });
+                    musicNodes = [];
+                } else {
+                    playing = true;
+                    btn.classList.add('playing');
+                    btn.textContent = '🔇';
+                    startMusic();
+                }
+            });
+        })();
+
+        // === PAW CURSOR TRAIL ===
+        (function() {
+            let lastPaw = 0;
+            const paws = ['🐾','🐾','🐾'];
+            document.addEventListener('mousemove', (e) => {
+                const now = Date.now();
+                if (now - lastPaw < 150) return;
+                lastPaw = now;
+                const paw = document.createElement('span');
+                paw.className = 'paw-trail';
+                paw.textContent = paws[Math.floor(Math.random()*paws.length)];
+                paw.style.left = e.clientX + 'px';
+                paw.style.top = e.clientY + 'px';
+                paw.style.setProperty('--paw-rot', (Math.random()*60-30) + 'deg');
+                document.body.appendChild(paw);
+                setTimeout(() => paw.remove(), 1200);
+            });
+        })();
+
+        // === QUIZ ===
+        (function() {
+            const questions = [
+                { q: '¿Cuantas horas al dia duerme un gato en promedio?', opts: ['6-8 horas','12-16 horas','18-20 horas','4-6 horas'], correct: 1 },
+                { q: '¿Los gatos pueden saborear lo dulce?', opts: ['Si, les encanta','No, no pueden','Solo un poco','Depende del gato'], correct: 1 },
+                { q: '¿Cuantos musculos tienen los gatos en cada oreja?', opts: ['12','22','32','42'], correct: 2 },
+                { q: '¿A que velocidad maxima puede correr un gato?', opts: ['20 km/h','35 km/h','48 km/h','60 km/h'], correct: 2 },
+                { q: '¿Cual de estos alimentos es toxico para los gatos?', opts: ['Pollo','Cebolla','Arroz','Pescado'], correct: 1 },
+                { q: '¿Cuantos años vive un gato en promedio?', opts: ['5-8 años','8-12 años','12-18 años','20-25 años'], correct: 2 },
+                { q: '¿Los gatos ven en colores?', opts: ['No, solo blanco y negro','Si, como los humanos','Si, pero limitado (azul y verde)','Solo en rojo'], correct: 2 },
+                { q: '¿Que porcentaje de su vida pasa un gato durmiendo?', opts: ['30%','50%','70%','90%'], correct: 2 },
+            ];
+            let current = 0, score = 0, answered = false;
+            const qEl = document.getElementById('quiz-question');
+            const oEl = document.getElementById('quiz-options');
+            const pEl = document.getElementById('quiz-progress');
+            const rEl = document.getElementById('quiz-result');
+            const sEl = document.getElementById('quiz-score');
+
+            function renderProgress() {
+                pEl.innerHTML = '';
+                questions.forEach((_, i) => {
+                    const pip = document.createElement('span');
+                    pip.className = 'quiz-pip' + (i === current ? ' current' : '');
+                    pEl.appendChild(pip);
+                });
+            }
+
+            function showQuestion() {
+                if (current >= questions.length) {
+                    oEl.style.display = 'none';
+                    qEl.style.display = 'none';
+                    rEl.style.display = 'block';
+                    const pct = Math.round(score/questions.length*100);
+                    let msg = pct >= 80 ? '🏆 Eres un experto gatuno!' : pct >= 50 ? '😸 Nada mal, sabes bastante!' : '🐱 Sigue aprendiendo sobre gatos!';
+                    sEl.innerHTML = score + '/' + questions.length + ' correctas (' + pct + '%)<br><span style="font-size:1rem">' + msg + '</span>';
+                    renderProgress();
+                    return;
+                }
+                answered = false;
+                const q = questions[current];
+                qEl.textContent = (current+1) + '. ' + q.q;
+                oEl.innerHTML = '';
+                oEl.style.display = 'grid';
+                q.opts.forEach((opt, i) => {
+                    const btn = document.createElement('button');
+                    btn.className = 'quiz-opt';
+                    btn.textContent = opt;
+                    btn.addEventListener('click', () => {
+                        if (answered) return;
+                        answered = true;
+                        if (i === q.correct) {
+                            btn.classList.add('correct');
+                            score++;
+                            pEl.children[current].classList.add('done');
+                        } else {
+                            btn.classList.add('wrong');
+                            oEl.children[q.correct].classList.add('correct');
+                            pEl.children[current].classList.add('fail');
+                        }
+                        oEl.querySelectorAll('.quiz-opt').forEach(b => b.disabled = true);
+                        setTimeout(() => { current++; showQuestion(); }, 1200);
+                    });
+                    oEl.appendChild(btn);
+                });
+                renderProgress();
+            }
+
+            document.getElementById('quiz-restart').addEventListener('click', () => {
+                current = 0; score = 0;
+                rEl.style.display = 'none';
+                qEl.style.display = 'block';
+                showQuestion();
+            });
+            showQuestion();
         })();
     </script>
 
