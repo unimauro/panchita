@@ -658,6 +658,295 @@
             animation: gentle-pulse 2s ease-in-out infinite;
         }
 
+        /* Visitor counter badge */
+        .visitor-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(255,255,255,0.85);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-top: 0.8rem;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .visitor-badge .vb-count {
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        /* Rutina / Timeline */
+        .timeline-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.8rem;
+            box-shadow: 0 4px 20px rgba(255,218,185,0.25);
+            border: 2px solid var(--peach);
+        }
+        .timeline {
+            position: relative;
+            padding-left: 2.5rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--peach), var(--pink), var(--lavender), var(--mint));
+            border-radius: 3px;
+        }
+        .timeline-item {
+            position: relative;
+            padding: 0.8rem 0;
+        }
+        .timeline-item::before {
+            content: attr(data-emoji);
+            position: absolute;
+            left: -2.1rem;
+            top: 0.8rem;
+            width: 28px;
+            height: 28px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .timeline-time {
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--pink);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .timeline-desc {
+            font-size: 0.95rem;
+            margin-top: 0.15rem;
+        }
+
+        /* Love / Carino section */
+        .love-section { text-align: center; }
+        .love-card {
+            background: linear-gradient(135deg, var(--pink-light), #FFE4E1, var(--lavender));
+            border-radius: 24px;
+            padding: 2rem;
+            border: 2px solid white;
+            box-shadow: 0 4px 20px rgba(255,182,193,0.25);
+            position: relative;
+            overflow: hidden;
+        }
+        .love-counter {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin: 0.5rem 0;
+        }
+        .love-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #FF6B81;
+            color: white;
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255,107,129,0.4);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+        .love-btn:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(255,107,129,0.5); }
+        .love-btn:active { transform: scale(0.95); }
+        .love-btn .heart-icon { font-size: 1.3rem; }
+        .flying-heart {
+            position: absolute;
+            font-size: 1.5rem;
+            pointer-events: none;
+            animation: fly-up 1.2s ease-out forwards;
+            z-index: 10;
+        }
+        @keyframes fly-up {
+            0% { opacity: 1; transform: translateY(0) scale(1); }
+            100% { opacity: 0; transform: translateY(-120px) scale(1.5) rotate(20deg); }
+        }
+
+        /* Cat facts carousel */
+        .facts-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(230,230,250,0.3);
+            border: 2px solid var(--lavender);
+            text-align: center;
+        }
+        .fact-display {
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .fact-text {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            transition: opacity 0.3s ease;
+        }
+        .fact-emoji { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .fact-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        .fact-nav-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--lavender);
+            background: white;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .fact-nav-btn:hover { background: var(--lavender); transform: scale(1.1); }
+        .fact-dots {
+            display: flex;
+            gap: 0.4rem;
+            align-items: center;
+        }
+        .fact-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--lavender);
+            transition: background 0.2s, transform 0.2s;
+        }
+        .fact-dot.active { background: var(--pink); transform: scale(1.3); }
+
+        /* Purr button floating */
+        .purr-float {
+            position: fixed;
+            bottom: 1.2rem;
+            left: 1.2rem;
+            z-index: 900;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            animation: bmc-entrance 0.5s ease 1.2s both;
+        }
+        .purr-float:hover { transform: scale(1.1); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+        .purr-float:active { transform: scale(0.9); }
+        .purr-float.purring {
+            animation: purr-vibrate 0.1s infinite;
+            background: var(--pink-light);
+        }
+        @keyframes purr-vibrate {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-2px) rotate(-2deg); }
+            75% { transform: translateX(2px) rotate(2deg); }
+        }
+
+        /* Tips section */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .tip-card {
+            background: white;
+            border-radius: 18px;
+            padding: 1.2rem;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .tip-card:hover { transform: translateY(-4px); }
+        .tip-card .tip-emoji { font-size: 2rem; margin-bottom: 0.4rem; }
+        .tip-card h4 {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+        .tip-card p {
+            font-size: 0.8rem;
+            line-height: 1.5;
+            color: #999;
+        }
+        .tip-card.tip-good { border: 2px solid var(--mint); }
+        .tip-card.tip-bad { border: 2px solid #FFB3B3; }
+
+        /* QR section */
+        .qr-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border: 2px solid var(--lavender);
+            text-align: center;
+        }
+        .qr-img {
+            width: 180px;
+            height: 180px;
+            margin: 1rem auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .qr-img img { width: 100%; height: 100%; object-fit: contain; }
+        .qr-note { font-size: 0.85rem; color: #999; margin-top: 0.8rem; }
+        .qr-print-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--lavender);
+            color: var(--text-dark);
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-top: 0.8rem;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .qr-print-btn:hover { background: var(--pink-light); transform: scale(1.05); }
+
+        /* Giscus comments */
+        .comments-section {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem 1.2rem;
+        }
+        .comments-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.8rem;
+            box-shadow: 0 4px 20px rgba(181,234,215,0.2);
+            border: 2px solid var(--mint);
+        }
+
         /* Sidebar Navigation */
         .sidebar-nav {
             position: fixed;
@@ -895,6 +1184,13 @@
 
             .bmc-float { bottom: 4.2rem; right: 0.8rem; font-size: 0.85rem; padding: 0.6rem 1rem; }
             .bmc-float img { width: 20px; height: 20px; }
+            .purr-float { bottom: 4.2rem; left: 0.8rem; width: 44px; height: 44px; font-size: 1.3rem; }
+            .tips-grid { grid-template-columns: 1fr; }
+            .love-counter { font-size: 2rem; }
+            .love-btn { font-size: 1rem; padding: 0.8rem 1.5rem; }
+            .qr-img { width: 150px; height: 150px; }
+            .comments-section { padding: 1.2rem 0.8rem; }
+            .comments-card { padding: 1.2rem; }
 
             /* Sidebar becomes bottom bar on mobile */
             .sidebar-nav {
@@ -949,11 +1245,16 @@
     <nav class="sidebar-nav" id="sidebar-nav">
         <a href="#hero" class="nav-dot active" data-label="Inicio"><span class="dot-icon">🏠</span></a>
         <a href="#conoce" class="nav-dot" data-label="Conoce"><span class="dot-icon">🌸</span></a>
-        <a href="#galeria" class="nav-dot" data-label="Galería"><span class="dot-icon">📸</span></a>
+        <a href="#rutina" class="nav-dot" data-label="Rutina"><span class="dot-icon">🕐</span></a>
+        <a href="#galeria" class="nav-dot" data-label="Galeria"><span class="dot-icon">📸</span></a>
+        <a href="#carino" class="nav-dot" data-label="Cariño"><span class="dot-icon">❤️</span></a>
+        <a href="#datos" class="nav-dot" data-label="Datos"><span class="dot-icon">🧠</span></a>
         <a href="#amigo" class="nav-dot" data-label="Ignacio"><span class="dot-icon">🐱</span></a>
-        <a href="#mapa" class="nav-dot" data-label="Ubicación"><span class="dot-icon">📍</span></a>
-        <a href="#visita" class="nav-dot" data-label="Visítala"><span class="dot-icon">💕</span></a>
-        <a href="#frase" class="nav-dot" data-label="Frase"><span class="dot-icon">💛</span></a>
+        <a href="#tips" class="nav-dot" data-label="Tips"><span class="dot-icon">📋</span></a>
+        <a href="#mapa" class="nav-dot" data-label="Mapa"><span class="dot-icon">📍</span></a>
+        <a href="#visita" class="nav-dot" data-label="Visita"><span class="dot-icon">💕</span></a>
+        <a href="#qr" class="nav-dot" data-label="QR"><span class="dot-icon">📱</span></a>
+        <a href="#mensajes" class="nav-dot" data-label="Mensajes"><span class="dot-icon">💬</span></a>
     </nav>
 
     <!-- Hero -->
@@ -963,6 +1264,7 @@
         </div>
         <h1><span class="paw">🐾</span> La Gata Panchita <span class="paw">🐾</span></h1>
         <p class="subtitle">La gatita del barrio que todos queremos</p>
+        <div class="visitor-badge">👀 <span class="vb-count" id="visitor-count">0</span> personas han conocido a Panchita</div>
     </header>
 
     <!-- Sobre Panchita -->
@@ -996,6 +1298,43 @@
         </div>
     </section>
 
+    <!-- Rutina de Panchita -->
+    <section class="fade-in" id="rutina">
+        <h2 class="section-title"><span class="icon">🕐</span> Un dia en la vida de Panchita</h2>
+        <div class="timeline-card">
+            <div class="timeline">
+                <div class="timeline-item" data-emoji="🌅">
+                    <div class="timeline-time">6:00 AM</div>
+                    <div class="timeline-desc">Se despierta y se estira en su lugarcito favorito</div>
+                </div>
+                <div class="timeline-item" data-emoji="☀️">
+                    <div class="timeline-time">8:00 AM</div>
+                    <div class="timeline-desc">Toma sol en la vereda y saluda a los vecinos</div>
+                </div>
+                <div class="timeline-item" data-emoji="😴">
+                    <div class="timeline-time">10:00 AM</div>
+                    <div class="timeline-desc">Siesta larga debajo de un auto o en la sombra</div>
+                </div>
+                <div class="timeline-item" data-emoji="🚶">
+                    <div class="timeline-time">3:00 PM</div>
+                    <div class="timeline-desc">Paseo por el barrio, explora y marca territorio</div>
+                </div>
+                <div class="timeline-item" data-emoji="🐱">
+                    <div class="timeline-time">6:00 PM</div>
+                    <div class="timeline-desc">Sale a jugar con su amigo Ignacio</div>
+                </div>
+                <div class="timeline-item" data-emoji="🍽️">
+                    <div class="timeline-time">8:00 PM</div>
+                    <div class="timeline-desc">Los vecinos le dan su comidita de la noche</div>
+                </div>
+                <div class="timeline-item" data-emoji="🌙">
+                    <div class="timeline-time">10:00 PM</div>
+                    <div class="timeline-desc">Se acomoda y duerme hasta el dia siguiente</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Galeria -->
     <div class="gallery-section" id="galeria">
         <section class="fade-in">
@@ -1026,6 +1365,35 @@
         </section>
     </div>
 
+    <!-- Dar Carino -->
+    <section class="fade-in love-section" id="carino">
+        <h2 class="section-title"><span class="icon">❤️</span> Dale cariño a Panchita</h2>
+        <div class="love-card" id="love-card">
+            <p>Panchita ha recibido</p>
+            <div class="love-counter"><span id="love-count">0</span> cariños</div>
+            <button class="love-btn" id="love-btn">
+                <span class="heart-icon">💖</span> Dar cariño
+            </button>
+            <p style="margin-top:0.8rem; font-size:0.85rem; color:#999;">Cada click es un abrazo virtual para Panchita</p>
+        </div>
+    </section>
+
+    <!-- Datos Curiosos -->
+    <section class="fade-in" id="datos">
+        <h2 class="section-title"><span class="icon">🧠</span> Datos curiosos de los gatos</h2>
+        <div class="facts-card">
+            <div class="fact-emoji" id="fact-emoji">🐱</div>
+            <div class="fact-display">
+                <p class="fact-text" id="fact-text">Cargando dato curioso...</p>
+            </div>
+            <div class="fact-nav">
+                <button class="fact-nav-btn" id="fact-prev">◀</button>
+                <div class="fact-dots" id="fact-dots"></div>
+                <button class="fact-nav-btn" id="fact-next">▶</button>
+            </div>
+        </div>
+    </section>
+
     <!-- Amigo Ignacio -->
     <section class="fade-in" id="amigo">
         <h2 class="section-title"><span class="icon">🐱</span> Su Amigo Ignacio</h2>
@@ -1039,6 +1407,43 @@
             <p style="margin-top:0.8rem; font-size:0.95rem; color:#999;">
                 Si vienes a esa hora, podrás verlos jugar juntos
             </p>
+        </div>
+    </section>
+
+    <!-- Tips de cuidado -->
+    <section class="fade-in" id="tips">
+        <h2 class="section-title"><span class="icon">📋</span> Como cuidar gatitos callejeros</h2>
+        <div class="tips-grid">
+            <div class="tip-card tip-good">
+                <div class="tip-emoji">💧</div>
+                <h4>Agua fresca</h4>
+                <p>Siempre dejale un platito con agua limpia, especialmente en verano</p>
+            </div>
+            <div class="tip-card tip-good">
+                <div class="tip-emoji">🐟</div>
+                <h4>Comida para gatos</h4>
+                <p>Dale croquetas o comida humeda especial para gatos</p>
+            </div>
+            <div class="tip-card tip-bad">
+                <div class="tip-emoji">🚫🥛</div>
+                <h4>No le des leche</h4>
+                <p>La mayoria de gatos adultos son intolerantes a la lactosa</p>
+            </div>
+            <div class="tip-card tip-bad">
+                <div class="tip-emoji">🚫🧅</div>
+                <h4>No cebolla ni ajo</h4>
+                <p>Son toxicos para los gatos, evita darles sobras con estos</p>
+            </div>
+            <div class="tip-card tip-good">
+                <div class="tip-emoji">🏥</div>
+                <h4>Veterinario</h4>
+                <p>Si ves un gatito enfermo, llevalo al veterinario mas cercano</p>
+            </div>
+            <div class="tip-card tip-good">
+                <div class="tip-emoji">🏠</div>
+                <h4>Refugio</h4>
+                <p>Una caja con manta en un lugar seco les ayuda mucho en invierno</p>
+            </div>
         </div>
     </section>
 
@@ -1098,6 +1503,46 @@
             <span class="quote-heart">💛</span>
         </div>
     </section>
+
+    <!-- QR para compartir -->
+    <section class="fade-in" id="qr">
+        <h2 class="section-title"><span class="icon">📱</span> Comparte la pagina de Panchita</h2>
+        <div class="qr-card">
+            <p>Escanea este codigo QR para visitar la pagina de Panchita desde tu celular</p>
+            <div class="qr-img">
+                <img src="img/qr-panchita.png" alt="QR de La Gata Panchita" id="qr-image">
+            </div>
+            <p class="qr-note">Imprimelo y pegalo en tu barrio para que mas personas conozcan a Panchita</p>
+            <button class="qr-print-btn" onclick="window.print()">🖨️ Imprimir QR</button>
+        </div>
+    </section>
+
+    <!-- Muro de mensajes -->
+    <section class="fade-in comments-section" id="mensajes">
+        <h2 class="section-title"><span class="icon">💬</span> Dejale un mensaje a Panchita</h2>
+        <div class="comments-card">
+            <p style="text-align:center; margin-bottom:1rem; color:#999; font-size:0.9rem;">Escribe un saludo, comparte tu experiencia o cuentanos si ya la conociste</p>
+            <script src="https://giscus.app/client.js"
+                data-repo="unimauro/panchita"
+                data-repo-id=""
+                data-category="General"
+                data-category-id=""
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="top"
+                data-theme="light_protanopia"
+                data-lang="es"
+                data-loading="lazy"
+                crossorigin="anonymous"
+                async>
+            </script>
+        </div>
+    </section>
+
+    <!-- Purr button floating -->
+    <button class="purr-float" id="purr-btn" title="Escucha el ronroneo de Panchita">😺</button>
 
     <!-- Buy Me a Coffee - floating -->
     <a href="https://www.buymeacoffee.com/unimauro" target="_blank" rel="noopener noreferrer" class="bmc-float" title="Ayuda a alimentar a Panchita">
@@ -1283,26 +1728,165 @@
 
         // Sidebar navigation - active section tracking
         const navDots = document.querySelectorAll('.nav-dot');
-        const sectionIds = ['hero', 'conoce', 'galeria', 'amigo', 'mapa', 'visita', 'frase'];
+        const sectionIds = ['hero', 'conoce', 'rutina', 'galeria', 'carino', 'datos', 'amigo', 'tips', 'mapa', 'visita', 'qr', 'mensajes'];
         const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
 
         function updateActiveNav() {
             const scrollPos = window.scrollY + window.innerHeight / 3;
             let currentId = sectionIds[0];
-
             sections.forEach(section => {
-                if (section.offsetTop <= scrollPos) {
-                    currentId = section.id;
-                }
+                if (section.offsetTop <= scrollPos) currentId = section.id;
             });
-
             navDots.forEach(dot => {
                 dot.classList.toggle('active', dot.getAttribute('href') === '#' + currentId);
             });
         }
-
         window.addEventListener('scroll', updateActiveNav, { passive: true });
         updateActiveNav();
+
+        // === VISITOR COUNTER ===
+        (function() {
+            let count = parseInt(localStorage.getItem('panchita-visitors') || '0');
+            const visited = sessionStorage.getItem('panchita-visited');
+            if (!visited) {
+                count++;
+                localStorage.setItem('panchita-visitors', count);
+                sessionStorage.setItem('panchita-visited', '1');
+            }
+            document.getElementById('visitor-count').textContent = count.toLocaleString();
+        })();
+
+        // === LOVE BUTTON ===
+        (function() {
+            let loves = parseInt(localStorage.getItem('panchita-loves') || '0');
+            const countEl = document.getElementById('love-count');
+            const btn = document.getElementById('love-btn');
+            const card = document.getElementById('love-card');
+            countEl.textContent = loves.toLocaleString();
+
+            btn.addEventListener('click', () => {
+                loves++;
+                localStorage.setItem('panchita-loves', loves);
+                countEl.textContent = loves.toLocaleString();
+
+                // Flying hearts
+                for (let i = 0; i < 3; i++) {
+                    const heart = document.createElement('span');
+                    heart.className = 'flying-heart';
+                    heart.textContent = ['❤️','💖','💕','💗','🩷'][Math.floor(Math.random()*5)];
+                    heart.style.left = (30 + Math.random()*40) + '%';
+                    heart.style.bottom = '40%';
+                    heart.style.animationDelay = (i * 0.15) + 's';
+                    card.appendChild(heart);
+                    setTimeout(() => heart.remove(), 1500);
+                }
+            });
+        })();
+
+        // === CAT FACTS CAROUSEL ===
+        (function() {
+            const facts = [
+                { emoji: '😴', text: 'Los gatos duermen entre 12 y 16 horas al dia. Son los reyes de la siesta!' },
+                { emoji: '👃', text: 'Los gatos tienen 200 millones de receptores olfativos. Los humanos solo 5 millones.' },
+                { emoji: '🐾', text: 'Cada gato tiene un patron unico en su nariz, como nuestras huellas dactilares.' },
+                { emoji: '🏃', text: 'Los gatos pueden correr hasta 48 km/h en distancias cortas.' },
+                { emoji: '💤', text: 'Los gatos pasan el 70% de su vida durmiendo. Panchita es una experta!' },
+                { emoji: '👂', text: 'Los gatos pueden rotar sus orejas 180 grados gracias a 32 musculos.' },
+                { emoji: '🐱', text: 'Los gatos ronronean a una frecuencia que puede ayudar a sanar huesos y musculos.' },
+                { emoji: '👁️', text: 'Los gatos pueden ver en la oscuridad 6 veces mejor que los humanos.' },
+                { emoji: '🧠', text: 'El cerebro de un gato es un 90% similar al de un humano.' },
+                { emoji: '❤️', text: 'El corazon de un gato late entre 110 y 140 veces por minuto, el doble que el nuestro.' }
+            ];
+            let current = 0;
+            const textEl = document.getElementById('fact-text');
+            const emojiEl = document.getElementById('fact-emoji');
+            const dotsContainer = document.getElementById('fact-dots');
+
+            facts.forEach((_, i) => {
+                const dot = document.createElement('span');
+                dot.className = 'fact-dot' + (i === 0 ? ' active' : '');
+                dotsContainer.appendChild(dot);
+            });
+            const dots = dotsContainer.querySelectorAll('.fact-dot');
+
+            function showFact(idx) {
+                current = (idx + facts.length) % facts.length;
+                textEl.style.opacity = 0;
+                setTimeout(() => {
+                    textEl.textContent = facts[current].text;
+                    emojiEl.textContent = facts[current].emoji;
+                    textEl.style.opacity = 1;
+                    dots.forEach((d,i) => d.classList.toggle('active', i === current));
+                }, 200);
+            }
+            showFact(0);
+            document.getElementById('fact-prev').addEventListener('click', () => showFact(current - 1));
+            document.getElementById('fact-next').addEventListener('click', () => showFact(current + 1));
+            setInterval(() => showFact(current + 1), 6000);
+        })();
+
+        // === PURR SOUND ===
+        (function() {
+            const btn = document.getElementById('purr-btn');
+            let audioCtx = null;
+            let purring = false;
+            let nodes = [];
+
+            btn.addEventListener('click', () => {
+                if (purring) {
+                    nodes.forEach(n => { try { n.stop ? n.stop() : n.disconnect(); } catch(e){} });
+                    nodes = [];
+                    purring = false;
+                    btn.classList.remove('purring');
+                    btn.textContent = '😺';
+                    return;
+                }
+                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                purring = true;
+                btn.classList.add('purring');
+                btn.textContent = '😻';
+
+                // Create purring sound with oscillators
+                const duration = 4;
+                const now = audioCtx.currentTime;
+
+                for (let i = 0; i < 3; i++) {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    const lfo = audioCtx.createOscillator();
+                    const lfoGain = audioCtx.createGain();
+
+                    osc.type = 'sine';
+                    osc.frequency.value = 25 + i * 3;
+                    lfo.type = 'sine';
+                    lfo.frequency.value = 20 + i * 5;
+                    lfoGain.gain.value = 8;
+
+                    lfo.connect(lfoGain);
+                    lfoGain.connect(osc.frequency);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+
+                    gain.gain.setValueAtTime(0, now);
+                    gain.gain.linearRampToValueAtTime(0.06, now + 0.3);
+                    gain.gain.setValueAtTime(0.06, now + duration - 0.5);
+                    gain.gain.linearRampToValueAtTime(0, now + duration);
+
+                    osc.start(now);
+                    osc.stop(now + duration);
+                    lfo.start(now);
+                    lfo.stop(now + duration);
+                    nodes.push(osc, lfo);
+                }
+
+                setTimeout(() => {
+                    purring = false;
+                    btn.classList.remove('purring');
+                    btn.textContent = '😺';
+                    nodes = [];
+                }, duration * 1000);
+            });
+        })();
     </script>
 
 </body>
