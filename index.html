@@ -439,7 +439,7 @@
             transform: translateX(-50%) translateY(0);
         }
 
-        /* Buy Me a Coffee - floating button */
+        /* Buy Me a Coffee - floating icon */
         .bmc-float {
             position: fixed;
             bottom: 1.2rem;
@@ -447,25 +447,34 @@
             z-index: 900;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0;
             background: #FFDD00;
             color: #000;
             font-family: 'Quicksand', sans-serif;
             font-weight: 700;
-            font-size: 0.95rem;
-            padding: 0.7rem 1.2rem;
-            border-radius: 50px;
+            font-size: 0;
+            width: 52px;
+            height: 52px;
+            padding: 0;
+            border-radius: 50%;
             text-decoration: none;
             border: none;
             cursor: pointer;
             box-shadow: 0 4px 20px rgba(255,221,0,0.45), 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             animation: bmc-entrance 0.5s ease 1s both;
+            justify-content: center;
+            overflow: hidden;
         }
 
         .bmc-float:hover {
-            transform: translateY(-3px) scale(1.05);
+            width: auto;
+            padding: 0 1.3rem;
+            border-radius: 50px;
+            gap: 0.5rem;
+            font-size: 0.95rem;
             box-shadow: 0 6px 28px rgba(255,221,0,0.55), 0 4px 12px rgba(0,0,0,0.12);
+            transform: translateY(-3px);
         }
 
         .bmc-float:active {
@@ -473,17 +482,32 @@
         }
 
         @keyframes bmc-entrance {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(30px) scale(0.5); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        .bmc-float img {
-            width: 24px;
-            height: 24px;
+        .bmc-float .bmc-icon {
+            font-size: 1.6rem;
+            flex-shrink: 0;
+            line-height: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .bmc-float:hover .bmc-icon {
+            transform: scale(1.1) rotate(-5deg);
         }
 
         .bmc-float .bmc-text {
             white-space: nowrap;
+            opacity: 0;
+            max-width: 0;
+            transition: opacity 0.25s ease 0.1s, max-width 0.35s ease;
+            overflow: hidden;
+        }
+
+        .bmc-float:hover .bmc-text {
+            opacity: 1;
+            max-width: 250px;
         }
 
         /* Friend section */
@@ -1182,8 +1206,9 @@
 
             .share-toast { font-size: 0.8rem; padding: 0.6rem 1.2rem; }
 
-            .bmc-float { bottom: 4.2rem; right: 0.8rem; font-size: 0.85rem; padding: 0.6rem 1rem; }
-            .bmc-float img { width: 20px; height: 20px; }
+            .bmc-float { bottom: 4.2rem; right: 0.8rem; width: 46px; height: 46px; }
+            .bmc-float .bmc-icon { font-size: 1.4rem; }
+            .bmc-float:hover { font-size: 0.85rem; }
             .purr-float { bottom: 4.2rem; left: 0.8rem; width: 44px; height: 44px; font-size: 1.3rem; }
             .tips-grid { grid-template-columns: 1fr; }
             .love-counter { font-size: 2rem; }
@@ -1546,7 +1571,7 @@
 
     <!-- Buy Me a Coffee - floating -->
     <a href="https://www.buymeacoffee.com/unimauro" target="_blank" rel="noopener noreferrer" class="bmc-float" title="Ayuda a alimentar a Panchita">
-        <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee">
+        <span class="bmc-icon">🍽️</span>
         <span class="bmc-text">Dale comidita a Panchita</span>
     </a>
 
