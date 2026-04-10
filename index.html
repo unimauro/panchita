@@ -3,8 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Gata Panchita 🐾</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐱</text></svg>">
+    <title>La Gata Panchita 🐾 - La gatita del barrio que todos queremos</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Conoce a Panchita, la gatita del barrio en Pueblo Libre, Lima. Galeria de fotos, datos curiosos, mapa de ubicacion y como ayudarla. Hecho con amor para la exposicion escolar.">
+    <meta name="keywords" content="gata panchita, gato callejero, pueblo libre, lima, mascota barrio, adopcion gatos, cuidado gatos">
+    <meta name="author" content="unimauro">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://unimauro.github.io/panchita/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://unimauro.github.io/panchita/">
+    <meta property="og:title" content="La Gata Panchita 🐾 - La gatita del barrio">
+    <meta property="og:description" content="Conoce a Panchita, la gatita del barrio en Pueblo Libre. Galeria, datos curiosos, quiz y como ayudarla!">
+    <meta property="og:image" content="https://unimauro.github.io/panchita/img/panchita-portrait.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="es_PE">
+    <meta property="og:site_name" content="La Gata Panchita">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="La Gata Panchita 🐾 - La gatita del barrio">
+    <meta name="twitter:description" content="Conoce a Panchita, la gatita del barrio en Pueblo Libre. Galeria, datos curiosos, quiz y como ayudarla!">
+    <meta name="twitter:image" content="https://unimauro.github.io/panchita/img/panchita-portrait.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180x180.png">
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#FFB6C1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Panchita">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Patrick+Hand&display=swap');
 
@@ -2497,6 +2532,11 @@
             });
             showQuestion();
         })();
+
+        // === PWA SERVICE WORKER ===
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').catch(() => {});
+        }
     </script>
 
 </body>
