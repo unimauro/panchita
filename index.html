@@ -2223,30 +2223,44 @@
         window.addEventListener('scroll', updateActiveNav, { passive: true });
         updateActiveNav();
 
-        // === VISITOR COUNTER ===
+        // === VISITOR COUNTER (global via API) ===
         (function() {
-            let count = parseInt(localStorage.getItem('panchita-visitors') || '0');
+            const el = document.getElementById('visitor-count');
             const visited = sessionStorage.getItem('panchita-visited');
             if (!visited) {
-                count++;
-                localStorage.setItem('panchita-visitors', count);
+                // First visit this session: increment
                 sessionStorage.setItem('panchita-visited', '1');
+                fetch('https://api.counterapi.dev/v1/panchita-unimauro/visits/up')
+                    .then(r => r.json())
+                    .then(data => { el.textContent = (data.count || 1).toLocaleString(); })
+                    .catch(() => { el.textContent = '---'; });
+            } else {
+                // Already visited this session: just get current count
+                fetch('https://api.counterapi.dev/v1/panchita-unimauro/visits')
+                    .then(r => r.json())
+                    .then(data => { el.textContent = (data.count || 1).toLocaleString(); })
+                    .catch(() => { el.textContent = '---'; });
             }
-            document.getElementById('visitor-count').textContent = count.toLocaleString();
         })();
 
-        // === LOVE BUTTON ===
+        // === LOVE BUTTON (global via API) ===
         (function() {
-            let loves = parseInt(localStorage.getItem('panchita-loves') || '0');
             const countEl = document.getElementById('love-count');
             const btn = document.getElementById('love-btn');
             const card = document.getElementById('love-card');
-            countEl.textContent = loves.toLocaleString();
+
+            // Load current count
+            fetch('https://api.counterapi.dev/v1/panchita-unimauro/loves')
+                .then(r => r.json())
+                .then(data => { countEl.textContent = (data.count || 0).toLocaleString(); })
+                .catch(() => { countEl.textContent = '0'; });
 
             btn.addEventListener('click', () => {
-                loves++;
-                localStorage.setItem('panchita-loves', loves);
-                countEl.textContent = loves.toLocaleString();
+                // Increment global count
+                fetch('https://api.counterapi.dev/v1/panchita-unimauro/loves/up')
+                    .then(r => r.json())
+                    .then(data => { countEl.textContent = (data.count || 0).toLocaleString(); })
+                    .catch(() => {});
 
                 // Flying hearts
                 for (let i = 0; i < 3; i++) {
