@@ -1,7 +1,9 @@
-const CACHE_NAME = 'panchita-v1';
+const CACHE_NAME = 'panchita-v2';
 const ASSETS = [
   '/',
   '/index.html',
+  '/css/styles.css',
+  '/js/main.js',
   '/img/panchita-hero.jpg',
   '/img/panchita-portrait.jpg',
   '/img/panchita1.jpg',
